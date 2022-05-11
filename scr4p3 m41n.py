@@ -24,11 +24,4 @@ for j, i in groupa :
     proddict[j]['relatedp'] = {'proda' : {}, 'prodf' : {}}
 print(proddict)
 
-for i in prodops :
-    url2e = "https://www.amazon.in/s?k="+i+"&crid=LPWOCPEFVKNR&sprefix=gp%2Caps%2C379&ref=nb_sb_noss_2"
-    url2 = url2e.replace(' ','+')
-    html_T2 = requests.get(url2, headers=headers)
-    souped2 = BeautifulSoup(html_T2.text, 'lxml')
-    groupb = souped2.find_all('div', class_ = "s-result-item s-asin sg-col-0-of-12 sg-col-16-of-20 sg-col s-widget-spacing-small sg-col-12-of-16")
-    
     
