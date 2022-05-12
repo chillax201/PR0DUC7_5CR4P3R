@@ -20,7 +20,6 @@ prodops = []
 
 for j, i in groupa :
     proddict[j]['name'] = str(i.find('span', class_ = '_2tW1I').text)
-    proddict[j]['pricex'] = int(i.find('span', class_ = '_89yzn').text.split()[-1])
     proddict[j]['relatedp'] = {'proda' : {}, 'prodf' : {}}
 print(proddict)
 
