@@ -34,6 +34,7 @@ html_T1 = requests.get(url1, headers=headers)
 souped1 = BeautifulSoup(html_T1.text, 'lxml')
 groupa = souped1.find_all('li', class_ = 'EIR5N')
 
+
 # data structure prototype : {`1` : {'name' : name, 'pricex' : pricex, 'relatedp' : {'proda' : {'pnamea' : pnamea, 'pcosta' : pcosta},'prodf' : {'pnameb' : pnameb, 'pcostb' : pcostb}}}, ...}
 
 #price and name data from second hand sales website
@@ -68,3 +69,7 @@ for i in proddict :
 print(prodals)
 print(proddict)
 #same method will be applied for proddict[i]['relatedp']['prodf']
+for j, i in groupa :
+    proddict[j]['name'] = str(i.find('span', class_ = '_2tW1I').text)
+    proddict[j]['relatedp'] = {'proda' : {}, 'prodf' : {}}
+print(proddict)
