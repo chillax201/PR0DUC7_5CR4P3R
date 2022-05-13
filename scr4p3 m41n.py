@@ -18,6 +18,7 @@ def check_rel(stra,strab):
             refl[1] = rel
             refl[0] = i
         y += 1
+    print(refl)
     return refl[2]
 
 #set of inits 
@@ -54,13 +55,16 @@ for i in proddict :
     souped2 = BeautifulSoup(html_T2.text, 'lxml')
     groupb = souped2.find_all('div', class_ = "s-result-item s-asin sg-col-0-of-12 sg-col-16-of-20 sg-col s-widget-spacing-small sg-col-12-of-16")
     k = 0
-    prodals[i]['ls'] = []
+    prodals[i] = {'ls' : [], }
     for j in groupb:
-        prodals[i]['ls'] += str(j.find('span', class_ = "a-size-medium a-color-base a-text-normal").text)
-        prodals[i][k] = int(j.find('span', class_ = 'a-price-whole').text)
-        k += 1
+        if j.find('span', class_ = 'a-price-whole'):
+            prodals[i]['ls'].append(str(j.find('span', class_ = "a-size-medium a-color-base a-text-normal").text))
+            prodals[i][k] = int(j.find('span', class_ = 'a-price-whole').text.replace(",","").replace(".",""))
+            k += 1
+    print(prodals)
     x = check_rel(prodals[i]['ls'], n)
-    proddict[i]['relatedp']['proda']['pname'] = prodals[i]['ls'][x]
+    proddict[i]['relatedp']['proda']['pnamea'] = prodals[i]['ls'][x]
     proddict[i]['relatedp']['proda']['pcosta'] = prodals[i][x]
+print(prodals)
 print(proddict)
 #same method will be applied for proddict[i]['relatedp']['prodf']
