@@ -38,10 +38,11 @@ groupa = souped1.find_all('li', class_ = 'EIR5N')
 #price and name data from second hand sales website
 i=0
 for j in groupa :
-    proddict[i] = {'name':'','pricex': 0, 'relatedp' : {'proda' : {'pnamea' : '','pcosta' : 0}, 'prodf' : {'pnameb' : '','pcostb' : 0}}}
-    proddict[i]['name'] = str(j.find('span', class_ = '_2tW1I').text)
-    proddict[i]['pricex'] = int(j.find('span', class_ = '_89yzn').text.split(' ')[-1].replace(",",""))
-    i += 1
+    if j.find('span', class_ = '_89yzn') :
+        proddict[i] = {'name':'','pricex': 0, 'relatedp' : {'proda' : {'pnamea' : '','pcosta' : 0}, 'prodf' : {'pnameb' : '','pcostb' : 0}}}
+        proddict[i]['name'] = str(j.find('span', class_ = '_2tW1I').text)
+        proddict[i]['pricex'] = int(j.find('span', class_ = '_89yzn').text.split(' ')[-1].replace(",",""))
+        i += 1
 print(proddict)
 
 #most relevant first hand price and name data for each product
