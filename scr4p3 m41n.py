@@ -24,6 +24,7 @@ def check_rel(stra,strab):
 #set of inits 
 prod = str(input("product:"))
 prodals = {}
+prodalsb = {}
 proddict = {}
 prodops = []
 
@@ -33,7 +34,6 @@ headers = {'user-agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:79.0) Gecko
 html_T1 = requests.get(url1, headers=headers)
 souped1 = BeautifulSoup(html_T1.text, 'lxml')
 groupa = souped1.find_all('li', class_ = 'EIR5N')
-
 
 # data structure prototype : {`1` : {'name' : name, 'pricex' : pricex, 'relatedp' : {'proda' : {'pnamea' : pnamea, 'pcosta' : pcosta},'prodf' : {'pnameb' : pnameb, 'pcostb' : pcostb}}}, ...}
 
@@ -46,6 +46,7 @@ for j in groupa :
         proddict[i]['pricex'] = int(j.find('span', class_ = '_89yzn').text.split(' ')[-1].replace(",",""))
         i += 1
 print(proddict)
+print("**********************************************************************************************************************************************************************")
 
 #most relevant first hand price and name data for each product
 for i in proddict :
@@ -62,14 +63,20 @@ for i in proddict :
             prodals[i]['ls'].append(str(j.find('span', class_ = "a-size-medium a-color-base a-text-normal").text))
             prodals[i][k] = int(j.find('span', class_ = 'a-price-whole').text.replace(",","").replace(".",""))
             k += 1
+    print("**********************************************************************************************************************************************************************")
     print(prodals)
+    print("**********************************************************************************************************************************************************************")
     x = check_rel(prodals[i]['ls'], n)
     proddict[i]['relatedp']['proda']['pnamea'] = prodals[i]['ls'][x]
     proddict[i]['relatedp']['proda']['pcosta'] = prodals[i][x]
+
 print(prodals)
+
+print("**********************************************************************************************************************************************************************")
+print("**********************************************************************************************************************************************************************")
 print(proddict)
+print("**********************************************************************************************************************************************************************")
+print("**********************************************************************************************************************************************************************")
+
+print("remember to chillax!")
 #same method will be applied for proddict[i]['relatedp']['prodf']
-for j, i in groupa :
-    proddict[j]['name'] = str(i.find('span', class_ = '_2tW1I').text)
-    proddict[j]['relatedp'] = {'proda' : {}, 'prodf' : {}}
-print(proddict)
