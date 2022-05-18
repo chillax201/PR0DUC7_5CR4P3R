@@ -66,9 +66,10 @@ for i in proddict :
     print("**********************************************************************************************************************************************************************")
     print(prodals)
     print("**********************************************************************************************************************************************************************")
-    x = check_rel(prodals[i]['ls'], n)
-    proddict[i]['relatedp']['proda']['pnamea'] = prodals[i]['ls'][x]
-    proddict[i]['relatedp']['proda']['pcosta'] = prodals[i][x]
+    if prodals[i]['ls']:
+        x = check_rel(prodals[i]['ls'], n)
+        proddict[i]['relatedp']['proda']['pnamea'] = prodals[i]['ls'][x]
+        proddict[i]['relatedp']['proda']['pcosta'] = prodals[i][x]
 
 print(prodals)
 
@@ -89,9 +90,10 @@ for i in proddict :
     print("**********************************************************************************************************************************************************************")
     print(prodalsb)
     print("**********************************************************************************************************************************************************************")
-    x = check_rel(prodalsb[i]['ls'], n)
-    proddict[i]['relatedp']['prodf']['pnameb'] = prodalsb[i]['ls'][x]
-    proddict[i]['relatedp']['prodf']['pcostb'] = prodalsb[i][x]
+    if prodalsb[i]['ls']:
+        x = check_rel(prodalsb[i]['ls'], n)
+        proddict[i]['relatedp']['prodf']['pnameb'] = prodalsb[i]['ls'][x]
+        proddict[i]['relatedp']['prodf']['pcostb'] = prodalsb[i][x]
 
 print(prodalsb)
 
@@ -100,6 +102,5 @@ print("*************************************************************************
 print(proddict)
 print("**********************************************************************************************************************************************************************")
 print("**********************************************************************************************************************************************************************")
-
+print("run the program for a min of 5 times with the same keyword in order for it to work at it's optimum")
 print("remember to chillax!")
-#same method will be applied for proddict[i]['relatedp']['prodf']
