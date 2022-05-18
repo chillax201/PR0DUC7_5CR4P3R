@@ -66,9 +66,10 @@ for i in proddict :
     print("**********************************************************************************************************************************************************************")
     print(prodals)
     print("**********************************************************************************************************************************************************************")
-    x = check_rel(prodals[i]['ls'], n)
-    proddict[i]['relatedp']['proda']['pnamea'] = prodals[i]['ls'][x]
-    proddict[i]['relatedp']['proda']['pcosta'] = prodals[i][x]
+    if prodals[i]['ls']:
+        x = check_rel(prodals[i]['ls'], n)
+        proddict[i]['relatedp']['proda']['pnamea'] = prodals[i]['ls'][x]
+        proddict[i]['relatedp']['proda']['pcosta'] = prodals[i][x]
 
 print(prodals)
 
